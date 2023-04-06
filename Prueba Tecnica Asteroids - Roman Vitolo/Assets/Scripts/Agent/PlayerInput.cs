@@ -11,14 +11,8 @@ public class PlayerInput : MonoBehaviour
    private void FixedUpdate()
    {
       GetMovementInput();
-      GetFiretInput();
-   }
-
-   private void GetFiretInput()
-   {
       GetFireInput();
    }
-
    private void GetFireInput()
    {
       if (Input.GetAxis("Fire1") > 0)

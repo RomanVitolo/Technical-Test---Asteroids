@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class BulletController : MonoBehaviour
@@ -15,9 +14,6 @@ public class BulletController : MonoBehaviour
     {
        _bulletMovementData.Rigidbody2D.velocity  = dir * (_bulletMovementData.Speed * Time.fixedDeltaTime);
     }
-
-
-    private void OnBecameInvisible() => gameObject.SetActive(false);
 
     private void OnCollisionEnter2D(Collision2D col)
     {
