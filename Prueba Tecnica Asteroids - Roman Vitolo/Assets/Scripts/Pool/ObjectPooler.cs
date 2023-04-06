@@ -14,6 +14,11 @@ public class ObjectPooler : MonoBehaviour
 	{
 		Instance = this;
 
+		InitialPoolSettings();
+	}
+
+	private void InitialPoolSettings()
+	{
 		pooledObjectsList = new List<List<GameObject>>();
 		pooledObjects = new List<GameObject>();
 		positions = new List<int>();
@@ -24,7 +29,7 @@ public class ObjectPooler : MonoBehaviour
 		}
 	}
 
-
+	//The way to call the different GameObject (by index) can be a future improvement in code.
 	public GameObject GetPooledObject(int index)
 	{
 		int curSize = pooledObjectsList[index].Count;
@@ -57,7 +62,9 @@ public class ObjectPooler : MonoBehaviour
 	}
 
 
-	//Solo en caso de necesitar agregar objetos diferente de forma dinamica
+	//This method is used to dynamically add objects.
+	//For example, if in the future it is implemented that the Asteroids instantiate smaller asteroids.
+	//Thanks to this method we could add them to the pool already created. 
 	public int AddObject(GameObject GO, int amt = 3, bool exp = true)
 	{
 		ObjectPoolItem item = new ObjectPoolItem(GO, amt, exp);

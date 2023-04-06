@@ -5,10 +5,6 @@ using UnityEngine;
 public class GameOver : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI _gameOverText;
-    private bool gameIsPaused;
-
-    public void ActiveText()
-    {
-        _gameOverText.gameObject.SetActive(true);
-    }
+    
+    public void ActiveText() => _gameOverText.gameObject.SetActive(true);
 }

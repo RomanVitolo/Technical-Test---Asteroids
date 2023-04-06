@@ -12,10 +12,7 @@ public class GameSettings : MonoBehaviour
     [field: SerializeField] public UnityEvent OnScoreChange { get; set; }
     [field: SerializeField] public UnityEvent OnShowGameOverUI { get; set; }
 
-    private void Awake()
-    {
-        Instance = this;
-    }
+    private void Awake() =>  Instance = this;
 
     public void TriggerGameOverEvents()
     {

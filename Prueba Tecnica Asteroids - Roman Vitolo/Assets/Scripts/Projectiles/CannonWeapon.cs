@@ -24,8 +24,6 @@ public class CannonWeapon : MonoBehaviour
         }
     }
 
-   
-
     private void GetMousePosition()
     {
         var mousePosition = cam.ScreenToWorldPoint(Input.mousePosition);
@@ -34,10 +32,7 @@ public class CannonWeapon : MonoBehaviour
         transform.up = Vector3.MoveTowards(transform.up, mousePosition, _bulletMovementData.RotationSpeed * Time.deltaTime);
     }
 
-    public void SpawnBullets()
-    {
-        GetBulletFromPool(true);
-    }
+    public void SpawnBullets() =>  GetBulletFromPool(true);
 
     private void GetBulletFromPool(bool activeOrDeactivated)
     {

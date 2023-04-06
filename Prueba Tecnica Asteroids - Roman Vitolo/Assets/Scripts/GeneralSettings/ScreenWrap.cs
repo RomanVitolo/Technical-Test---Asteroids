@@ -1,33 +1,42 @@
+using System.Linq;
 using UnityEngine;
 
 public class ScreenWrap : MonoBehaviour
 {
-    private Camera mainCamera;
+    private bool _isWrappingX;
+    private bool _isWrappingY;
+    private Renderer[] _renderers;
 
-    private void Awake()
+    private void Start() =>  _renderers = GetComponents<Renderer>();
+    private void Update() => ScreenWrapObject();
+    private void ScreenWrapObject()
     {
-        mainCamera = Camera.main;
-    }
-
-    private void Update()
-    {
-        CheckScreenWrap();
-    }
-
-    private void CheckScreenWrap()
-    {
-        Vector3 viewportPosition = mainCamera.WorldToViewportPoint(transform.position);
-
-        if (viewportPosition.x < 0f || viewportPosition.x > 1f)
+        if (IsVisible())
         {
-            viewportPosition.x = 1f - viewportPosition.x;
+            _isWrappingX = false;
+            _isWrappingY = false;
+            return;
         }
 
-        if (viewportPosition.y < 0f || viewportPosition.y > 1f)
+        var newPosition = transform.position;
+
+        if (!_isWrappingX && (newPosition.x > 1 || newPosition.x < 0))
         {
-            viewportPosition.y = 1f - viewportPosition.y;
+            newPosition.x = -newPosition.x;
+            _isWrappingX = true;
         }
 
-        transform.position = mainCamera.ViewportToWorldPoint(viewportPosition);
+        if (!_isWrappingY && (newPosition.y > 1 || newPosition.y < 0))
+        {
+            newPosition.y = -newPosition.y;
+            _isWrappingY = true;
+        }
+
+        transform.position = newPosition;
+    }
+
+    private bool IsVisible()
+    {
+        return _renderers.Any(renderer => renderer.isVisible);
     }
 }

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 using Random = UnityEngine.Random;
 
 public class Spawner : MonoBehaviour
@@ -12,11 +11,8 @@ public class Spawner : MonoBehaviour
         UtilitySettingsClass.ScreenLimits();
     }
 
-    void Start()
-    {
-        timer = spawnDelay;
-    }
-    
+    void Start() => timer = spawnDelay;
+
     void Update()
     {
         timer -= Time.deltaTime;
@@ -32,26 +28,16 @@ public class Spawner : MonoBehaviour
     {
         GameObject objectToSpawn = ObjectPooler.Instance.GetPooledObject(index);
         objectToSpawn.SetActive(true);
+        objectToSpawn.transform.position = SpawnPosition();
     }
-   
 
 
-    Vector3 SpawnPosition()
+    private Vector3 SpawnPosition()
     {
         float x = Random.Range(UtilitySettingsClass.minX, UtilitySettingsClass.maxX);
         float y = Random.Range(UtilitySettingsClass.minY, UtilitySettingsClass.maxY);
         float z = 0;
-
-        Vector3 vector = new Vector3(x, y, z);
-
-        return vector;
-    }
-    Vector3 LimitSpawnPosition()
-    {
-        float x = UtilitySettingsClass.randomX;
-        float y = UtilitySettingsClass.randomY;
-        float z = 0;
-
+        
         Vector3 vector = new Vector3(x, y, z);
 
         return vector;

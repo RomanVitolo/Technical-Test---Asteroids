@@ -354,7 +354,7 @@ MonoBehaviour:
     amountToPool: 50
     shouldExpand: 1
   - objectToPool: {fileID: 491311056728925202, guid: 964b7d9a34acfa84a9186bf6f6cd954c, type: 3}
-    amountToPool: 40
+    amountToPool: 100
     shouldExpand: 0
 --- !u!1 &519420028
 GameObject:
@@ -799,6 +799,23 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1272019370}
   m_CullTransparentMesh: 1
+--- !u!1 &1400503971 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 38826526146933990, guid: d0e69762876e2e641b76c74e188849a0, type: 3}
+  m_PrefabInstance: {fileID: 1987051386}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1400503981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1400503971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8f2fa85be58b014f866fc9650016f2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1795043366
 GameObject:
   m_ObjectHideFlags: 0
@@ -948,6 +965,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 38826526146933992, guid: d0e69762876e2e641b76c74e188849a0, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3564500077146886544, guid: d0e69762876e2e641b76c74e188849a0, type: 3}
+      propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

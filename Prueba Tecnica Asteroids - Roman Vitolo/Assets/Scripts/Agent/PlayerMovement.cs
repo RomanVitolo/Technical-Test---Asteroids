@@ -21,14 +21,10 @@ public class PlayerMovement : MonoBehaviour
     private void FixedUpdate()
     {
         PlayerMovementDataSo.Rigidbody2D.velocity = currentVelocity * movementDirection.normalized;
-        
     }
 
-    private void Update()
-    {
-        FaceDirection();
-    }
-
+    private void Update() =>  FaceDirection();
+    
     public void MovePlayer(Vector2 movementInput)
     {
         if (movementInput.magnitude > 0)
@@ -60,8 +56,5 @@ public class PlayerMovement : MonoBehaviour
         mousePosition.z = 0;
 
         transform.up = mousePosition;
-        /*float angle = Mathf.Atan2(mousePosition.y - transform.position.y, mousePosition.x - transform.position.x) * Mathf.Rad2Deg;
-        Quaternion rotation = Quaternion.Euler(new Vector3(0f, 0f, angle));
-        transform.rotation = Quaternion.Slerp(transform.rotation, rotation, rotationSpeed * Time.deltaTime);*/
     }
 }
