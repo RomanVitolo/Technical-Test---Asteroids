@@ -1,6 +1,8 @@
 # Technical-Test---Asteroids
 Roman Vitolo - Technical Test
 
+Inside the project you can find a game build
+
 English:
 
 This project is the result of a technical test.
