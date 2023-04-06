@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Numerics;
 using UnityEngine;
 using UnityEngine.Events;
@@ -5,27 +6,30 @@ using UnityEngine.Events;
 public class GameSettings : MonoBehaviour
 {
     public static GameSettings Instance;
+    
+    [field: SerializeField] public BigInteger ScoreValue { get; set; }
     [field: SerializeField] public UnityEvent OnPlayerDie { get; set; }
     [field: SerializeField] public UnityEvent OnScoreChange { get; set; }
+    [field: SerializeField] public UnityEvent OnShowGameOverUI { get; set; }
 
-    [field: SerializeField] public BigInteger ScoreValue { get; set; }
-   
     private void Awake()
     {
         Instance = this;
-        if (Instance != null)
-        {
-            Destroy(this);
-        }
     }
 
-    public void PlayerDieEvent()
+    public void TriggerGameOverEvents()
     {
-        OnPlayerDie?.Invoke();
+        ShowGameOverText();
+        StartCoroutine(WaitForLoadScene(2f));
     }
 
-    public void UpdateGameScore()
+    private IEnumerator WaitForLoadScene(float time)
     {
-        OnScoreChange?.Invoke();
+        yield return new WaitForSeconds(time);
+        PlayerDieEvent();
     }
+
+    private void PlayerDieEvent() =>  OnPlayerDie?.Invoke();
+    public void UpdateGameScore() => OnScoreChange?.Invoke();
+    private void ShowGameOverText() => OnShowGameOverUI?.Invoke();
 }

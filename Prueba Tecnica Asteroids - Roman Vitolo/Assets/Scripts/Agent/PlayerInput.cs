@@ -5,7 +5,6 @@ public class PlayerInput : MonoBehaviour
 {
    [field: SerializeField] public UnityEvent<Vector2> OnMovementKeyPressed { get; set; }
    [field: SerializeField] public UnityEvent OnFireButtonPressed{ get; set; }
-   [field: SerializeField] public UnityEvent OnFireButtonReleased{ get; set; }
 
    private bool fireButton;
 
@@ -30,7 +29,6 @@ public class PlayerInput : MonoBehaviour
          if (fireButton)
          {
             fireButton = false;
-            OnFireButtonReleased?.Invoke();
          }
       }
    }

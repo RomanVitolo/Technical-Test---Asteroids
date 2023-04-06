@@ -6,7 +6,7 @@ public class PlayerDeath : MonoBehaviour, IDie
 {
     public void Die()
     {
-        /*Destroy(this.gameObject,1f);
-        GameSettings.Instance.PlayerDieEvent();*/
+        Destroy(gameObject);
+        GameSettings.Instance.TriggerGameOverEvents();
     }
 }
