@@ -3,9 +3,8 @@ using UnityEngine;
 
 public class BulletController : MonoBehaviour
 {
+    [Header("Get Bullet Movement Configuration")]
     [SerializeField] private BulletMovementData _bulletMovementData;
-
-    [SerializeField] private Rigidbody2D _rigidbody2D;
 
     private void OnEnable()
     {
@@ -18,11 +17,7 @@ public class BulletController : MonoBehaviour
     }
 
 
-    private void OnBecameInvisible()
-    {
-        gameObject.SetActive(false);
-        //ObjectPooler.Instance.GetAllPooledObjects(_bulletMovementData.index);
-    }
+    private void OnBecameInvisible() => gameObject.SetActive(false);
 
     private void OnCollisionEnter2D(Collision2D col)
     {
@@ -31,7 +26,6 @@ public class BulletController : MonoBehaviour
             col.transform.GetComponent<EnemyController>().Die();
             
             this.gameObject.SetActive(false);
-           // ObjectPooler.Instance.GetAllPooledObjects(_bulletMovementData.index);
         }
     }
 }

@@ -17,15 +17,33 @@ public class UtilitySettingsClass : MonoBehaviour
         minY = position.y - cameraHeight / 2f;
         maxY = position.y + cameraHeight / 2f;
     }
-
-    public static float randomX, randomY;
-    public static void GetLimits()
+    
+    public static Vector3 RandomSpawnObjects()
     {
-        float screenWidth = Screen.width;
-        float screenHeight = Screen.height;
+        float x = Random.Range(minX, maxX);
+        float y = Random.Range(minY, maxY);
+        float z = 0;
         
-        randomX = Random.Range(0f, screenWidth);
-        randomY = screenHeight;
-        Vector3 randomPosition = new Vector3(randomX, randomY, 0f);
+        Vector3 vector = new Vector3(x, y, z);
+
+        return vector;
+    }
+    
+    //GetLimits() Can be refactor for better performance
+    public static float ScreenRatio, Width, Height;
+    public static Vector3 GetLimits()
+    {
+        float spawnDistance = 10f; 
+        Vector3 randomPos = Random.insideUnitCircle.normalized * spawnDistance;
+        randomPos.z = 0f;
+
+        ScreenRatio = (float)Screen.width / (float)Screen.height;
+        Width = Camera.main.orthographicSize * ScreenRatio;
+        Height = Camera.main.orthographicSize;
+        
+        randomPos.x = Mathf.Clamp(randomPos.x, -Width, Width);
+        randomPos.y = Mathf.Clamp(randomPos.y, -Height, Height);
+
+        return randomPos;
     }
 }

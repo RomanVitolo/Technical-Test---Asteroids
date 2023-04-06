@@ -18,10 +18,6 @@ public class CannonWeapon : MonoBehaviour
     private void Update()
     {
         GetMousePosition();
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            SpawnBullets();
-        }
     }
 
     private void GetMousePosition()

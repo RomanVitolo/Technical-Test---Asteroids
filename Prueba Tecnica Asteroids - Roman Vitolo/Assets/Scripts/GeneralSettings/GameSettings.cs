@@ -6,11 +6,11 @@ using UnityEngine.Events;
 public class GameSettings : MonoBehaviour
 {
     public static GameSettings Instance;
-    
-    [field: SerializeField] public BigInteger ScoreValue { get; set; }
     [field: SerializeField] public UnityEvent OnPlayerDie { get; set; }
     [field: SerializeField] public UnityEvent OnScoreChange { get; set; }
     [field: SerializeField] public UnityEvent OnShowGameOverUI { get; set; }
+    [field: SerializeField] public bool RandomSpawnObjects { get; private set; }
+    [field: SerializeField] public BigInteger ScoreValue { get; set; }
 
     private void Awake() =>  Instance = this;
 

@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1dcb716399b697e4cbe5c416d6a883a7, type: 3}
   m_Name: LaserBullet
   m_EditorClassIdentifier: 
-  Speed: 250
+  Speed: 300
   RotationSpeed: 1
   index: 2
   Rigidbody2D: {fileID: 0}

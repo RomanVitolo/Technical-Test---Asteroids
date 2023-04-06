@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class EnemyController : MonoBehaviour, IDie
 {
+    [Header("Get Asteroid DataType")]
     [SerializeField] private AsteroidDataSO _asteroidData;
     public void Die()
     {

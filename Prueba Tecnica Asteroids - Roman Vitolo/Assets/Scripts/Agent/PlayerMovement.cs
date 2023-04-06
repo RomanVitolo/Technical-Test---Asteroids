@@ -4,23 +4,25 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerMovement : MonoBehaviour
 {
-    [field: SerializeField] public PlayerMovementDataSO PlayerMovementDataSo { get; set; }
+    [Header("Get Player Movement Configuration")]
+    [Space(15)]
+    [SerializeField] private PlayerMovementDataSO _playerMovementData;
     
+    [Header("Utility Parameters")]
     [SerializeField] protected float currentVelocity = 3f;
     [SerializeField] protected Vector2 movementDirection;
-    [SerializeField] private float rotationSpeed;
-
+    
     private Camera mainCamera;
 
     private void Awake()
     {
-        PlayerMovementDataSo.Rigidbody2D = GetComponent<Rigidbody2D>();
+        _playerMovementData.Rigidbody2D = GetComponent<Rigidbody2D>();
         mainCamera = Camera.main;
     }
 
     private void FixedUpdate()
     {
-        PlayerMovementDataSo.Rigidbody2D.velocity = currentVelocity * movementDirection.normalized;
+        _playerMovementData.Rigidbody2D.velocity = currentVelocity * movementDirection.normalized;
     }
 
     private void Update() =>  FaceDirection();
@@ -40,14 +42,14 @@ public class PlayerMovement : MonoBehaviour
     {
         if (movementInput.magnitude > 0)
         {
-            currentVelocity += PlayerMovementDataSo.Acceleration * Time.fixedDeltaTime;
+            currentVelocity += _playerMovementData.Acceleration * Time.fixedDeltaTime;
         }
         else
         {
-            currentVelocity += PlayerMovementDataSo.Deceleration * Time.fixedDeltaTime;
+            currentVelocity += _playerMovementData.Deceleration * Time.fixedDeltaTime;
         }
 
-        return Mathf.Clamp(currentVelocity, 0.01f, PlayerMovementDataSo.Speed);
+        return Mathf.Clamp(currentVelocity, 0.01f, _playerMovementData.Speed);
     }
     
     private void FaceDirection()
