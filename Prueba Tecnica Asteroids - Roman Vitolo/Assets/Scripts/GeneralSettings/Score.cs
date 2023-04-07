@@ -1,12 +1,15 @@
 using TMPro;
 using UnityEngine;
 
-public class Score : MonoBehaviour
+namespace GlobalSettings
 {
-   [SerializeField] private TextMeshProUGUI _gameScore;
+    public class Score : MonoBehaviour
+    {
+        [SerializeField] private TextMeshProUGUI _gameScore;
 
-   public void GameScore()
-   {
-      _gameScore.text = GameSettings.Instance.ScoreValue.ToString();
-   }
+        public void GameScore()
+        {
+            _gameScore.text = GameSettings.Instance.ScoreValue.ToString();
+        }
+    }
 }

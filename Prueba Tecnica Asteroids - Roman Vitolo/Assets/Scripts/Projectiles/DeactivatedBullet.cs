@@ -1,10 +1,13 @@
-
 using UnityEngine;
 
-public class DeactivatedBullet : MonoBehaviour
+namespace ProjectileBehaviour
 {
-    private void OnBecameInvisible()
+    public class DeactivatedBullet : MonoBehaviour
     {
-        gameObject.SetActive(false);
+        private void OnBecameInvisible()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }
+

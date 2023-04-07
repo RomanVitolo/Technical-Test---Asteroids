@@ -1,4 +1,5 @@
 ﻿using System;
+using GlobalSettings;
 using UnityEngine;
 using Random = UnityEngine.Random;
 

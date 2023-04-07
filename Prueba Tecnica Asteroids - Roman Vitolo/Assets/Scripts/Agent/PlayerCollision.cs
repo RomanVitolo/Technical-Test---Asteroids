@@ -1,12 +1,16 @@
 using UnityEngine;
 
-public class PlayerCollision : MonoBehaviour
+namespace PlayerBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D col)
+    public class PlayerCollision : MonoBehaviour
     {
-        if (col.collider.CompareTag("Enemy"))
+        private void OnCollisionEnter2D(Collision2D col)
         {
-            this.gameObject.GetComponent<PlayerDeath>().Die();
+            if (col.collider.CompareTag("Enemy"))
+            {
+                this.gameObject.GetComponent<PlayerDeath>().Die();
+            }
         }
     }
 }
+

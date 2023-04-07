@@ -1,13 +1,17 @@
+using GlobalSettings;
 using UnityEngine;
 
-public class EnemyController : MonoBehaviour, IDie
+namespace EnemyBehaviour
 {
-    [Header("Get Asteroid DataType")]
-    [SerializeField] private AsteroidDataSO _asteroidData;
-    public void Die()
+    public class EnemyController : MonoBehaviour, IDie
     {
-        this.gameObject.SetActive(false);
-        GameSettings.Instance.ScoreValue += _asteroidData.ScoreValue;
-        GameSettings.Instance.UpdateGameScore();
+        [Header("Get Asteroid DataType")]
+        [SerializeField] private AsteroidDataSO _asteroidData;
+        public void Die()
+        {
+            this.gameObject.SetActive(false);
+            GameSettings.Instance.ScoreValue += _asteroidData.ScoreValue;
+            GameSettings.Instance.UpdateGameScore();
+        }
     }
 }

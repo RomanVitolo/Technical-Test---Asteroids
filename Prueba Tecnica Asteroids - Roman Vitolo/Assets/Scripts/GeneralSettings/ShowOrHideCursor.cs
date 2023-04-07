@@ -1,18 +1,18 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class ShowOrHideCursor : MonoBehaviour
+namespace GlobalSettings
 {
-    [SerializeField] private bool activeOrDeactivated;
-    private void Start()
+    public class ShowOrHideCursor : MonoBehaviour
     {
-        CursorVisibility();
-    }
+        [SerializeField] private bool activeOrDeactivated;
+        private void Start()
+        {
+            CursorVisibility();
+        }
 
-    private void CursorVisibility()
-    {
-        Cursor.visible = activeOrDeactivated;
+        private void CursorVisibility()
+        {
+            Cursor.visible = activeOrDeactivated;
+        }
     }
 }

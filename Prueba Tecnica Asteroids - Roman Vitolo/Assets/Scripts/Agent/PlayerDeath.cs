@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
+using GlobalSettings;
 using UnityEngine;
 
-public class PlayerDeath : MonoBehaviour, IDie
+namespace PlayerBehaviour
 {
-    public void Die()
+    public class PlayerDeath : MonoBehaviour, IDie
     {
-        Destroy(gameObject);
-        GameSettings.Instance.TriggerGameOverEvents();
+        public void Die()
+        {
+            Destroy(gameObject);
+            GameSettings.Instance.TriggerGameOverEvents();
+        }
     }
 }

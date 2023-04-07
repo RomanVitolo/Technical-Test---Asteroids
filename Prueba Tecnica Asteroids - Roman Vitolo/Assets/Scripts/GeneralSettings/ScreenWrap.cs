@@ -1,42 +1,45 @@
 using System.Linq;
 using UnityEngine;
 
-public class ScreenWrap : MonoBehaviour
+namespace GlobalSettings
 {
-    private bool _isWrappingX;
-    private bool _isWrappingY;
-    private Renderer[] _renderers;
-
-    private void Start() =>  _renderers = GetComponents<Renderer>();
-    private void Update() => ScreenWrapObject();
-    private void ScreenWrapObject()
+    public class ScreenWrap : MonoBehaviour
     {
-        if (IsVisible())
+        private bool _isWrappingX;
+        private bool _isWrappingY;
+        private Renderer[] _renderers;
+
+        private void Start() =>  _renderers = GetComponents<Renderer>();
+        private void Update() => ScreenWrapObject();
+        private void ScreenWrapObject()
         {
-            _isWrappingX = false;
-            _isWrappingY = false;
-            return;
+            if (IsVisible())
+            {
+                _isWrappingX = false;
+                _isWrappingY = false;
+                return;
+            }
+
+            var newPosition = transform.position;
+
+            if (!_isWrappingX && (newPosition.x > 1 || newPosition.x < 0))
+            {
+                newPosition.x = -newPosition.x;
+                _isWrappingX = true;
+            }
+
+            if (!_isWrappingY && (newPosition.y > 1 || newPosition.y < 0))
+            {
+                newPosition.y = -newPosition.y;
+                _isWrappingY = true;
+            }
+
+            transform.position = newPosition;
         }
 
-        var newPosition = transform.position;
-
-        if (!_isWrappingX && (newPosition.x > 1 || newPosition.x < 0))
+        private bool IsVisible()
         {
-            newPosition.x = -newPosition.x;
-            _isWrappingX = true;
+            return _renderers.Any(renderer => renderer.isVisible);
         }
-
-        if (!_isWrappingY && (newPosition.y > 1 || newPosition.y < 0))
-        {
-            newPosition.y = -newPosition.y;
-            _isWrappingY = true;
-        }
-
-        transform.position = newPosition;
-    }
-
-    private bool IsVisible()
-    {
-        return _renderers.Any(renderer => renderer.isVisible);
     }
 }
